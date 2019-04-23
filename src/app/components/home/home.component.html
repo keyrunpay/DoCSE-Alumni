@@ -1,0 +1,89 @@
+<br>
+<div class="container">
+  <section id="home-section">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="stickMe">
+          <div class="left-content elevation">
+            <div *ngIf="homeData">
+              <div class="top"></div>
+              <div class="profile-image text-center">
+                <img [src]="homeData.img" alt="">
+                <br><br>
+                <h4>{{homeData.name}}</h4>
+                <p>{{homeData.headline}}</p>
+                <hr>
+              </div>
+              <div class="down">
+                <div class="flex jcsb">
+                  <h5>Posts Made</h5>
+                  <h5>{{homeData.postCount}}</h5>
+                </div>
+                <div class="flex jcsb">
+                  <h5>Who viewed your profile</h5>
+                  <h5>{{homeData.profileVisits}}</h5>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="!homeData" style="padding: 20px;">
+              <ngx-content-loading [width]="275">
+                <svg:g ngx-code-preset></svg:g>
+              </ngx-content-loading>
+              <ngx-content-loading [width]="275">
+                <svg:g ngx-code-preset></svg:g>
+              </ngx-content-loading>
+            </div>
+          </div>
+
+          <div class="left-content-next elevation mt-3">
+            <div class="items">
+              <p>Organizations</p>
+              <br>
+              <p>Hastags</p>
+              <br>
+              <p>Researches</p>
+              <br>
+              <p>News</p>
+              <br>
+              <p>Events</p>
+              <br>
+              <p>Job Offers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <app-post-item></app-post-item>
+        <div *ngIf="!items" class="elevation" style="background:#fff;">
+          <div style="padding: 40px">
+            <ngx-content-loading [width]="250">
+              <svg:g ngx-facebook-preset></svg:g>
+            </ngx-content-loading>
+            <ngx-content-loading [width]="250">
+              <svg:g ngx-facebook-preset></svg:g>
+            </ngx-content-loading>
+          </div>
+        </div>
+        <div *ngIf="items" class="mid-content">
+          <div *ngFor="let item of items">
+            <app-post [datas]="item"></app-post>
+          </div>
+        </div>
+        <br>
+      </div>
+
+      <div class="col-md-3">
+        <div class="stickMe">
+          <div class="right-content elevation" style="position: relative; height: 400px; background: #fff;">
+            <p class="centerize">Advertisements Here</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+</div>

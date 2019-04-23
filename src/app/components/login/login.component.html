@@ -1,0 +1,25 @@
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>KU Alumni Login</mat-card-title>
+  </mat-card-header>
+  <br>
+  <mat-card-content>
+    <form (submit)="sendLoginInfo()" class="login-form">
+      <span>Email Address <span class="text-danger">*</span>  </span>
+      <input name="username" class="customInput" [(ngModel)]="username" type="text" placeholder="Email Address" required>
+      <span class="text-danger" *ngIf="err && err.email">{{err.email}}</span>
+      <div class="gap"></div>
+      <span>Password <span class="text-danger">*</span> </span>
+      <input name="username" class="customInput" [(ngModel)]="password" type="password" placeholder="Password" required>
+      <span class="text-danger" *ngIf="err && err.password">{{err.password}}</span>
+      <div class="gap"></div>
+      <button type="submit" mat-raised-button color="primary">Login</button>
+      <button (click)="gotoRegister()" mat-raised-button style="margin-left:10px;" color="primary">Register</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+      <!-- <mat-form-field class="form-full-width" appearance="outline">
+        <mat-label>Email Address</mat-label>
+        <input name="username" [(ngModel)]="username" matInput type="text" required>
+      </mat-form-field> -->

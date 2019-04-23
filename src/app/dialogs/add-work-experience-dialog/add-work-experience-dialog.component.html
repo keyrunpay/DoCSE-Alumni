@@ -1,0 +1,95 @@
+<section *ngIf="!addMode && !updateMode" id="workList" style="width:400px; max-width: 100%;">
+  <div class="flex jcsb">
+    <h1>Experiences</h1>
+    <button style="margin-top: -10px;" mat-icon-button color="primary" matTooltip="Add New Experience"
+      (click)="addModeToggle();">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="workList" class="lists pt-3">
+    <div class="item pb-2 mb-2" *ngFor="let item of workList;let cnt=index;">
+      <div class="flex pl-3 pr-1  jcsb">
+        <div class="left">
+          <div class="flex">
+            <div>
+              <img src="assets/images/work.png" style="width:50px; height:50px;" alt="">
+            </div>
+            <div class="pl-3 workDesc">
+              <p>{{item.organization_name}}</p>
+              <p>{{item.position}}</p>
+              <p>{{item.years}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <button mat-icon-button (click)="toggleUpdate(cnt);">
+            <i class="fas fa-pencil-alt"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center" *ngIf="!workList || workList.length==0">
+    <br>
+    <img style="width:200px; max-width: 90%;" src="assets/images/not_found.svg" alt="">
+    <br><br>
+    <p style="font-size: 18px; font-weight: 700;" class="text-danger m-0">Oops! No experiences yet</p>
+  </div>
+</section>
+
+<section id="addWork" *ngIf="addMode" style="width:400px; max-width: 100%;">
+  <div class="flex">
+    <button (click)="addModeToggle();" mat-icon-button style="margin-top: -8px;">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <h1 class="ml-2">Add Experience</h1>
+  </div>
+  <div class="inputs">
+    <p class="mt-3">Organization Name <span class="text-danger">*</span> </p>
+    <input [(ngModel)]="organization_name" (keyup)="getWorks();" type="text" class="customInput"
+      placeholder="eg. Kathmandu University">
+
+    <div *ngIf="isSearching" class="pl-4 py-3">
+      <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+    </div>
+    <div *ngIf="workSet && !isSearching && workSet.length>0" class="py-3">
+      <mat-chip-list>
+        <mat-chip *ngFor="let item of workSet;" (click)="addToTop(item.name)">{{item.name}}</mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <p class="mt-2">Post in organization <span class="text-danger">*</span> </p>
+    <input [(ngModel)]="position" type="text" class="customInput" placeholder="eg. Student">
+    <p class="mt-2">Working Years <span class="text-danger">*</span> </p>
+    <input [(ngModel)]="years" type="text" class="customInput" placeholder="eg. 2017-2021">
+    <br><br>
+    <button mat-raised-button color="primary" (click)="addExp();">
+      Add Experience
+    </button>
+  </div>
+</section>
+
+<section id="addWork" *ngIf="updateMode" style="width:400px; max-width: 100%;">
+  <div class="flex">
+    <button (click)="toggleUpdate(0);" mat-icon-button style="margin-top: -8px;">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <h1 class="ml-2">Edit Experience</h1>
+  </div>
+  <div class="inputs">
+    <p class="mt-3">Organization Name: {{organization_name}} </p>
+    <p class="mt-2">Position in organization <span class="text-danger">*</span> </p>
+    <input [(ngModel)]="position" type="text" class="customInput" placeholder="eg. Student">
+    <p class="mt-2">Working Years <span class="text-danger">*</span> </p>
+    <input [(ngModel)]="years" type="text" class="customInput" placeholder="eg. 2017-2021">
+    <br><br>
+    <button mat-raised-button color="primary" (click)="updateExp();">
+      Update Experience
+    </button>
+    <button mat-raised-button color="warn" (click)="delExp();" class="ml-3">
+      Delete Experience
+    </button>
+  </div>
+</section>

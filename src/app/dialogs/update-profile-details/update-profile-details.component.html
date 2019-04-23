@@ -1,0 +1,66 @@
+<div *ngIf="showLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!showLoading">
+  <h2 mat-dialog-title>Update Your Profile</h2>
+  <mat-dialog-content>
+
+    <form class="login-form">
+      <div class="row">
+        <div class="col-md-6">
+          <span>Short Bio</span>
+          <input name="name" class="customInput" [(ngModel)]="data.short_bio" type="text" placeholder="Short Bio"
+            required>
+          <div class="gap"></div>
+
+          <span>Phone Number</span>
+          <input name="phone" class="customInput" [(ngModel)]="data.phone" type="text" placeholder="Phone Number"
+            required>
+          <div class="gap"></div>
+
+          <span>Country</span>
+          <input name="country" class="customInput" [(ngModel)]="data.country" type="text" placeholder="Country"
+            required>
+          <div class="gap"></div>
+
+          <span>Address</span>
+          <input name="address" class="customInput" [(ngModel)]="data.address" type="text" placeholder="Address"
+            required>
+          <div class="gap"></div>
+        </div>
+        <div class="col-md-6">
+          <span>Batch</span>
+          <input name="batch" class="customInput" [(ngModel)]="data.batch" type="text" placeholder="Batch" required>
+          <div class="gap"></div>
+
+          <span>Passed Year</span>
+          <input name="pyear" class="customInput" [(ngModel)]="data.passed_year" type="text" placeholder="Passed Year"
+            required>
+          <div class="gap"></div>
+
+          <span>Registration Number</span>
+          <input name="reg" class="customInput" [(ngModel)]="data.reg_number" type="text" placeholder="Address"
+            required>
+          <div class="gap"></div>
+
+          <span>Program </span>
+          <select name="program" [(ngModel)]="data.program" class="customSelect">
+            <option value="" disabled selected>Select your program</option>
+            <option value="Computer Science" selected>Computer Science</option>
+            <option value="Computer Engineering">Computer Engineering</option>
+          </select>
+          <div class="gap"></div>
+
+        </div>
+      </div>
+
+
+    </form>
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="doUpdate();">Update</button>
+    <button mat-raised-button color="warn" (click)="doClose();">Close</button>
+  </mat-dialog-actions>
+</div>

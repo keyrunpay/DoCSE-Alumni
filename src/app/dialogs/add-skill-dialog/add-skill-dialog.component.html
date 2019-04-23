@@ -1,0 +1,35 @@
+<section style="width:500px; max-width: 100%;" id="addSkills">
+  <h1>Edit Skills</h1>
+  <mat-form-field style="width:100%;" class="example-chip-list" appearance="outline">
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let item of skills; let cnt=index;" [selectable]="selectable" [removable]="removable"
+        (removed)="remove(cnt, item);">
+        {{item.name}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input (keyup)="getRecommend($event);" placeholder="More Skills .. " [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+  </mat-form-field>
+
+
+  <h1>Recommended for you</h1>
+  <div id="recommend" class="my-3">
+    <mat-chip-list *ngIf="!recomSkills && !isLoading">
+      <mat-chip *ngFor="let item of skillSet;" (click)="addSkills(item);">{{item}}</mat-chip>
+    </mat-chip-list>
+
+    <mat-chip-list *ngIf="recomSkills && recomSkills.length>0 && !isLoading">
+      <mat-chip *ngFor="let item of recomSkills;" (click)="addSkills(item.name);">{{item.name}}</mat-chip>
+    </mat-chip-list>
+
+    <div *ngIf="isLoading" class="ml-4">
+      <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+    </div>
+
+    <div *ngIf="recomSkills && recomSkills.length==0 && !isLoading">
+      <p class="text-danger">No Recommendation Found</p>
+    </div>
+  </div>
+</section>

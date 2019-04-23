@@ -1,0 +1,83 @@
+<div class="elevation mb-3">
+
+  <div *ngIf="!postBodyControl" id="top">
+    <div class="label">
+      <div (click)="postBodyControlSwap()" class="cont">
+        <div class="left flex ci">
+          <i class="far fa-edit"></i>
+          <span>Write a post</span>
+        </div>
+      </div>
+      <div class="right">
+        <div class="item flex ci jcc">
+          <i class="far fa-file-image"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="postBodyControl" (click)="postBodyControlSwap()" class="overlay"></div>
+
+  <div *ngIf="postBodyControl" id="bottom">
+    <div class="top">
+      <img src="https://www.w3schools.com/w3images/avatar2.png" alt="">
+    </div>
+    <div class="bgw text-center">
+      <i class="fas fa-thumbtack"></i>
+      <select [(ngModel)]="postConf" class="customSelect moreSelectStyle" name="privacy">
+        <option value="Normal">Normal</option>
+        <option value="Important">Important</option>
+      </select>
+      <p *ngIf="!checkPostConf()">Normal post are shown to all the users in network, but not pinned to top</p>
+      <p *ngIf="checkPostConf()">Important post will be pinned, but require admin's approval</p>
+      <div class="gap"></div>
+    </div>
+    <div class="controls">
+      <textarea id="postWritingArea" [(ngModel)]="postBody" name="postBody" rows="4" placeholder="Write something dude"></textarea>
+      <div *ngIf="pictures">
+        <div class="row">
+          <div *ngFor="let items of pictures;let cnt=index;" class="col-md-6">
+            <div class="picture">
+                <p>
+                  <i (click)="delImage(cnt);" mat-icon-button class="fas fa-times"></i>
+                </p>
+                <img [src]="items" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mid">
+        <div class="flex ci">
+            <i class="far fa-trash-alt"></i>
+            <span>Expires ⇒ &nbsp;</span>
+            <select [(ngModel)]="expiry" class="customSelect moreSelectStyle np" name="expire">
+              <option value="86400">1 day</option>
+              <option value="172800">2 days</option>
+              <option value="259200">3 days</option>
+              <option value="604800">7 days</option>
+              <option value="1296000">15 days</option>
+              <option value="2592000">30 days</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="bottom">
+      <div class="flex jcsb">
+        <div class="one">
+          <button class="ico" mat-icon-button (click)="openFileBrowser();">
+
+              <i style="vertical-align: middle;" class="far fa-file-image"></i>
+            </button>
+            <input type="file" id="imagePicker" (change)="readUrl($event)" style="display:none;">
+            <i *ngIf="isUploading" class="fas fa-spin fa-spinner ml-1" style="font-size: 16px;"></i>
+        </div>
+        <div class="two">
+          <button mat-button style="vertical-align: middle;" (click)="doPost();" class="btnX">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

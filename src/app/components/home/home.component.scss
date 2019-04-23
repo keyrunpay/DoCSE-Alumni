@@ -1,0 +1,68 @@
+@import 'src/assets/variable';
+
+.left-content{
+   background-color: $w;
+   .top{
+      height: 80px;
+      background: url('https://static.licdn.com/sc/h/3chad3rzxalsf65nuo7hxciac') no-repeat;
+      background-size: cover;
+      border-radius: 2px 2px 0 0;
+   }
+   .profile-image {
+      img{
+         width: 80px;
+         height: 80px;
+         border-radius: 50%;
+         margin-top: -40px;
+         border: 2px solid $w;
+      }
+      h4{
+         @extend %fontBold;
+         margin-bottom: 2px;
+      }
+      p{
+         @extend %fontNormal;
+      }
+   }
+   .down{
+      padding: 0 15px;
+      h5{
+         @extend %fontNormal;
+         font-weight: bold;
+      }
+
+      .flex{
+         cursor: pointer;
+         &:hover{
+            h5{
+               text-decoration: underline;
+               color: $db;
+            }
+         }
+      }
+   }
+}
+
+.stickMe{
+   position: sticky;
+   top: 20px;
+}
+
+.left-content-next{
+   background: $w;
+   .items{
+      padding: 15px;
+      p{
+         cursor: pointer;
+         @extend %fontB13;
+         color: $db;
+         display: inline-block;
+         margin-bottom: 2px;
+
+         &:hover{
+            text-decoration: underline;
+         }
+      }
+   }
+}
+

@@ -1,0 +1,126 @@
+@import 'src/assets/variable';
+
+.left-content{
+   background-color: $w;
+   .top{
+      height: 80px;
+      background: url('https://static.licdn.com/sc/h/3chad3rzxalsf65nuo7hxciac') no-repeat;
+      background-size: cover;
+      border-radius: 2px 2px 0 0;
+   }
+   .profile-image {
+      position: relative;
+      .edit{
+         position: absolute;
+         right: 20px;
+         top:20px;
+         button{
+            cursor: pointer;
+            &:hover{
+               i{
+                  color: $dp;
+               }
+            }
+         }
+         i{
+            font-size: 20px;
+            color: $mb;
+            transition: .3s;
+         }
+      }
+      img{
+         width: 80px;
+         height: 80px;
+         border-radius: 50%;
+         margin-top: -40px;
+         border: 2px solid $w;
+      }
+      h4{
+         @extend %fontBold;
+         margin-bottom: 2px;
+      }
+      p{
+         @extend %fontNormal;
+      }
+   }
+   .down{
+      padding: 0 15px;
+      h5{
+         @extend %fontNormal;
+         font-weight: bold;
+      }
+
+      .flex{
+         cursor: pointer;
+         &:hover{
+            h5{
+               text-decoration: underline;
+               color: $db;
+            }
+         }
+      }
+   }
+}
+
+.stickMe{
+   position: sticky;
+   top: 20px;
+}
+
+.profileDetails{
+   padding: 0 20px;
+   i{
+      margin-right: 10px;
+   }
+   p{
+      margin: 0;
+      &:not(:last-child){
+         margin-bottom: 5px;
+      }
+      font-size: 14px;
+      font-weight: 400;
+   }
+}
+
+.right-content{
+   background: #fff;
+   &::ng-deep .mat-chip-list-wrapper{
+      justify-content: center;
+   }
+   .top{
+      h2{
+         padding-top: 8px;
+         @extend %fontBold;
+         font-size: 18px;
+         margin: 0;
+         line-height: normal;
+         // font-size: 20px;
+         // text-transform: uppercase;
+      }
+      button{
+         i{
+            color: $db;
+            transition: .3s;
+         }
+         &:hover{
+            i{
+               color: $dp;
+            }
+         }
+      }
+   }
+
+
+}
+
+
+
+.workList{
+   .right{
+      p{
+         margin:0;
+         font-size: 13px;
+         line-height: normal;
+      }
+   }
+}
